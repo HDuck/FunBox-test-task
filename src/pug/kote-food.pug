@@ -1,6 +1,6 @@
 //- 
     Миксин карточки товара.
-    Принимает на вход данные о состоянии, начинке, кол-ве порций, кол-ве подарочных мышей, настроении заказчика и весе.
+    Входные данные: состояние карточки, начинка, описание лакомства, кол-во порций, кол-во подарочных мышей, настроение заказчика и вес лакомства.
 
 mixin kote-card(filler, amount, promoRats, mood, weight)
     span.kote-food__head Сказочное заморское яство
@@ -13,7 +13,7 @@ mixin kote-card(filler, amount, promoRats, mood, weight)
         span.kote-food__amount= `${amount} порции`
     else if (amount >= 5)
         span.kote-food__amount= `${amount} порций`
-    
+
     if (promoRats === 1)
         span.kote-food__promo-rat мышь в подарок
     else if (promoRats > 1 && promoRats < 5)
@@ -22,10 +22,10 @@ mixin kote-card(filler, amount, promoRats, mood, weight)
         span.kote-food__promo-rat= `${promoRats} мышей в подарок`
     if (mood)
         span.kote-food__customer-mood заказчик доволен
-    
+
     .kote-food__weight= `${weight} кг`
 
-mixin kote(status, filler, amount, promoRats, mood, weight)
+mixin kote(status, filler, desc, amount, promoRats, mood, weight)
     .kote-food
         if (status === 'selected' || status === 'disabled')
             div(class=`kote-food__card_${status}`)
@@ -33,4 +33,11 @@ mixin kote(status, filler, amount, promoRats, mood, weight)
         else
             .kote-food__card
                 +kote-card(filler, amount, promoRats, mood, weight)
-        p.kote-food__msg
+
+        if (status === 'selected')
+            p.kote-food__msg= desc
+        else if (status === 'disabled')
+            p.kote-food__msg= `Печалька, ${filler} закончился.`
+        else
+            p.kote-food__msg Чего сидишь? Порадуй котэ, 
+                span.kote-food__msg-btn купи.
