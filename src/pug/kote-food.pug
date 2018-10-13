@@ -1,0 +1,36 @@
+//- 
+    Миксин карточки товара.
+    Принимает на вход данные о состоянии, начинке, кол-ве порций, кол-ве подарочных мышей, настроении заказчика и весе.
+
+mixin kote-card(filler, amount, promoRats, mood, weight)
+    span.kote-food__head Сказочное заморское яство
+    span.kote-food__name Нямушка
+    span.kote-food__filler= filler
+
+    if (amount === 1)
+        span.kote-food__amount= `${amount} порция`
+    else if (amount > 1 && amount < 5)
+        span.kote-food__amount= `${amount} порции`
+    else if (amount >= 5)
+        span.kote-food__amount= `${amount} порций`
+    
+    if (promoRats === 1)
+        span.kote-food__promo-rat мышь в подарок
+    else if (promoRats > 1 && promoRats < 5)
+        span.kote-food__promo-rat= `${promoRats} мыши в подарок`
+    else if (promoRats >= 5)
+        span.kote-food__promo-rat= `${promoRats} мышей в подарок`
+    if (mood)
+        span.kote-food__customer-mood заказчик доволен
+    
+    .kote-food__weight= `${weight} кг`
+
+mixin kote(status, filler, amount, promoRats, mood, weight)
+    .kote-food
+        if (status === 'selected' || status === 'disabled')
+            div(class=`kote-food__card_${status}`)
+                +kote-card(filler, amount, promoRats, mood, weight)
+        else
+            .kote-food__card
+                +kote-card(filler, amount, promoRats, mood, weight)
+        p.kote-food__msg
