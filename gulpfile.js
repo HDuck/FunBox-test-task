@@ -2,18 +2,16 @@ const gulp = require('gulp'),
       pug = require('gulp-pug'),
       scss = require('gulp-sass'),
       clean = require('gulp-clean'),
+      concat = require('gulp-concat'),
       rename = require('gulp-rename');
 
-gulp.task('scss', ['clean'], () => {
-    return gulp.src('./src/scss/main.scss')
+gulp.task('scss', () => {
+    gulp.src('./src/scss/main.scss')
         .pipe(scss().on('error', scss.logError))
-        .pipe(rename((path) => {
-            path.basename = 'style'
-        }))
         .pipe(gulp.dest('./src/css'));
 });
 
-gulp.task('pug', ['clean'], () => {
+gulp.task('pug', () => {
     return gulp.src('./src/pug/main.pug')
         .pipe(pug({
             pretty: true,
@@ -24,9 +22,10 @@ gulp.task('pug', ['clean'], () => {
         .pipe(gulp.dest('./src/'));
 });
 
-gulp.task('clean', () => {
-    return gulp.src(['./src/*.html', './src/css/*.css'])
-        .pipe(clean());
+gulp.task('concat:css', () => {
+    return gulp.src(['./src/css/normalize.css', './src/css/main.css'])
+        .pipe(concat('styles.css'))
+        .pipe(gulp.dest('./src/css'));
 });
 
 gulp.task('watch', () => {
