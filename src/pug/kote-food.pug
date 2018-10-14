@@ -27,8 +27,8 @@ mixin kote-card(filler, amount, promoRats, mood, weight)
         span.kote-food__weight-num= weight
         span.kote-food__weight-unit кг
 
-mixin kote(status, filler, desc, amount, promoRats, mood, weight)
-    .kote-food
+mixin kote(status, filler, desc, amount, promoRats, mood, weight, idx)
+    div(class="kote-food" data-id=idx)
         if (status === 'selected' || status === 'disabled')
             div(class=`kote-food__pack_${status}`)
                 +kote-card(filler, amount, promoRats, mood, weight)

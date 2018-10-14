@@ -3,6 +3,11 @@
   src: url("../fonts/Exo2.0-Thin.otf"); }
 
 .container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: center;
   box-sizing: border-box;
   width: 100%;
   height: 100vh;
@@ -43,6 +48,8 @@
     height: 480px;
     padding: 22px 48px 270px;
     background: transparent no-repeat center/cover;
+    transition: background-image .35s ease 0s; }
+  .kote-food__pack, .kote-food__pack_selected {
     cursor: pointer; }
   .kote-food__pack {
     background-image: url("../img/card-bg_def.png"); }
@@ -130,6 +137,14 @@
 
 .kote-food__pack_disabled + .kote-food__msg {
   color: #ffff66; }
+
+.hover > .kote-food__pack_selected:hover {
+  background-image: url("../img/card-bg_sel-hov.png"); }
+  .hover > .kote-food__pack_selected:hover > .kote-food__head {
+    color: #d91667; }
+
+.hover > .kote-food__pack:hover {
+  background-image: url("../img/card-bg_def-hov.png"); }
 
 @media (max-height: 680px) {
   .container {

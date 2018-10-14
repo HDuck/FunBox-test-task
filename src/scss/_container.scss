@@ -5,6 +5,7 @@ $txt-colors: (
     weight: rgb(255, 255, 255),
     msg: rgb(255, 255, 255),
     link: rgb(22, 152, 217),
+    selected: rgb(217, 22, 103),
     disabled: rgba(179, 179, 179, 0.502),
     disabled-msg: rgb(255, 255, 102)
 );
@@ -16,6 +17,11 @@ $bg-colors: (
 );
 
 .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    align-content: center;
     box-sizing: border-box;
     width: 100%;
     height: 100vh;
@@ -64,6 +70,10 @@ $bg-colors: (
         height: 480px;
         padding: 22px 48px 270px;
         background: transparent no-repeat center/cover;
+        transition: background-image .35s ease 0s;
+    }
+
+    &__pack, &__pack_selected {
         cursor: pointer;
     }
 
@@ -192,5 +202,22 @@ $bg-colors: (
 
     &__pack_disabled + &__msg {
         color: map-get($txt-colors, disabled-msg);
+    }
+}
+
+// Стили для hover
+
+.hover {
+
+    & > .kote-food__pack_selected:hover {
+        background-image: url("../img/card-bg_sel-hov.png");
+
+        & > .kote-food__head {
+            color: map-get($txt-colors, selected);
+        }
+    }
+
+    & > .kote-food__pack:hover {
+        background-image: url("../img/card-bg_def-hov.png");
     }
 }

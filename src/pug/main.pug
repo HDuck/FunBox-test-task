@@ -40,9 +40,10 @@ html(lang="en")
         title FunBox-test-task
         link(rel="stylesheet", href="./css/normalize.css")
         link(rel="stylesheet", href="./css/main.css")
+        script(src="./js/script.js")
     body
         article.container
             h1.heading Ты сегодня покормил кота?
             .content
-                each val in koteCards
-                    +kote(val.status, val.filler, val.desc, val.amount, val.promoRats, val.mood, val.weight)
+                each val, idx in koteCards
+                    +kote(val.status, val.filler, val.desc, val.amount, val.promoRats, val.mood, val.weight, idx)
