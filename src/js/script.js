@@ -213,5 +213,5 @@ function addTouchHandlers(elems) {
             }
         }
     });
-
+}
 window.onload = init;
