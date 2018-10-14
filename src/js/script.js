@@ -60,20 +60,20 @@ function addClickHandlers(elems) {
             addHoverEvent(packCont);
 
             packCont.addEventListener('click', function(evt) {
-                clickHandler(evt, elems);
+                handler(evt, elems);
             });
             
             if (isDefault) {
                 let linkBtn = document.getElementsByClassName('kote-food__msg-btn')[0];
                 linkBtn.addEventListener('click', function(evt) {
-                    clickHandler(evt, elems);
+                    handler(evt, elems);
                 });
             }
         }
     });
 }
 
-function clickHandler(evt, elems) {
+function handler(evt, elems) {
     evt.stopPropagation();
     let currStatus = getStatus(elems);
 
@@ -90,6 +90,7 @@ function changeStatus(currStat, pos) {
 
 function changeDesign(initEvt, elems, status) {
     let target = initEvt.currentTarget;
+    let contW = document.getElementsByClassName('container')[0].clientWidth;
     let isBtn = target.className.indexOf('-btn') != -1;
 
     elems.some(function(val, idx) {
@@ -108,9 +109,16 @@ function changeDesign(initEvt, elems, status) {
                 targetCont.nextElementSibling.innerHTML = 'Чего сидишь? Порадуй котэ, <span class="kote-food__msg-btn"><b>купи.</b></span>';
                 
                 let linkBtn = targetCont.nextElementSibling.children[0];
-                linkBtn.addEventListener('click', function(evt) {
-                    clickHandler(evt, elems, nextStatus);
-                });
+
+                if (contW > 1180) {
+                    linkBtn.addEventListener('click', function(evt) {
+                        handler(evt, elems, nextStatus);
+                    });
+                } else {
+                    linkBtn.addEventListener('touchend', function(evt) {
+                        handler(evt, elems, nextStatus);
+                    });
+                }
 
             } else {
                 targetCont.className = 'kote-food__pack_' + nextStatus[idx];
@@ -123,8 +131,10 @@ function changeDesign(initEvt, elems, status) {
                 }
             }
 
-            removeHoverEvent(targetCont, isSelected);
-            addHoverEvent(targetCont, initEvt);
+            if (contW > 1180) {
+                removeHoverEvent(targetCont, isSelected);
+                addHoverEvent(targetCont, initEvt);
+            }
             return true;
         }
     });
@@ -178,5 +188,30 @@ function mouseOut() {
         header.textContent = 'Сказочное заморское яство';
     }
 }
+
+function addTouchHandlers(elems) {
+    let currStatus = getStatus(elems);
+    
+    elems.forEach(function (val, idx) {
+        let isDisabled = currStatus[idx] === 'disabled';
+        let isDefault = currStatus[idx] === 'default';
+
+        if (!isDisabled) {
+            let packCont = val.children[0];
+
+            // addHoverEvent(packCont);
+
+            packCont.addEventListener('touchend', function(evt) {
+                handler(evt, elems);
+            });
+            
+            if (isDefault) {
+                let linkBtn = document.getElementsByClassName('kote-food__msg-btn')[0];
+                linkBtn.addEventListener('touchend', function(evt) {
+                    handler(evt, elems);
+                });
+            }
+        }
+    });
 
 window.onload = init;
