@@ -5,28 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>FunBox-test-task</title>
-    <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="./css/normalize.css"/>
+    <link rel="stylesheet" href="./css/main.css"/>
   </head>
   <body>
     <article class="container">
       <h1 class="heading">Ты сегодня покормил кота?</h1>
-      <div class="kote-food">
-        <div class="kote-food__card"><span class="kote-food__head">Сказочное заморское яство</span><span class="kote-food__name">Нямушка</span><span class="kote-food__filler">с фуа-гра</span><span class="kote-food__amount">10 порций</span><span class="kote-food__promo-rat">мышь в подарок</span>
-          <div class="kote-food__weight">0.5 кг</div>
+      <div class="content">
+        <div class="kote-food">
+          <div class="kote-food__pack"><span class="kote-food__head">Сказочное заморское яство</span><span class="kote-food__name">Нямушка</span><span class="kote-food__filler">с фуа-гра</span><span class="kote-food__amount"><b>10</b> порций</span><span class="kote-food__promo-rat">мышь в подарок</span>
+            <div class="kote-food__weight"><span class="kote-food__weight-num">0,5</span><span class="kote-food__weight-unit">кг</span></div>
+          </div>
+          <p class="kote-food__msg">Чего сидишь? Порадуй котэ, <span class="kote-food__msg-btn"> <b>купи.</b></span></p>
         </div>
-        <p class="kote-food__msg">Чего сидишь? Порадуй котэ, <span class="kote-food__msg-btn">купи.</span></p>
-      </div>
-      <div class="kote-food">
-        <div class="kote-food__card_selected"><span class="kote-food__head">Сказочное заморское яство</span><span class="kote-food__name">Нямушка</span><span class="kote-food__filler">с рыбой</span><span class="kote-food__amount">40 порций</span><span class="kote-food__promo-rat">2 мыши в подарок</span>
-          <div class="kote-food__weight">2 кг</div>
+        <div class="kote-food">
+          <div class="kote-food__pack_selected"><span class="kote-food__head">Сказочное заморское яство</span><span class="kote-food__name">Нямушка</span><span class="kote-food__filler">с рыбой</span><span class="kote-food__amount"><b>40</b> порций</span><span class="kote-food__promo-rat"><b>2</b> мыши в подарок</span>
+            <div class="kote-food__weight"><span class="kote-food__weight-num">2</span><span class="kote-food__weight-unit">кг</span></div>
+          </div>
+          <p class="kote-food__msg">Головы щучьи с чесноком да свежайшая сёмгушка.</p>
         </div>
-        <p class="kote-food__msg">Головы щучьи с чесноком да свежайшая сёмгушка.</p>
-      </div>
-      <div class="kote-food">
-        <div class="kote-food__card_disabled"><span class="kote-food__head">Сказочное заморское яство</span><span class="kote-food__name">Нямушка</span><span class="kote-food__filler">с курой</span><span class="kote-food__amount">100 порций</span><span class="kote-food__promo-rat">5 мышей в подарок</span><span class="kote-food__customer-mood">заказчик доволен</span>
-          <div class="kote-food__weight">5 кг</div>
+        <div class="kote-food">
+          <div class="kote-food__pack_disabled"><span class="kote-food__head">Сказочное заморское яство</span><span class="kote-food__name">Нямушка</span><span class="kote-food__filler">с курой</span><span class="kote-food__amount"><b>100</b> порций</span><span class="kote-food__promo-rat"><b>5</b> мышей в подарок</span><span class="kote-food__customer-mood">заказчик доволен</span>
+            <div class="kote-food__weight"><span class="kote-food__weight-num">5</span><span class="kote-food__weight-unit">кг</span></div>
+          </div>
+          <p class="kote-food__msg">Печалька, с курой закончился.</p>
         </div>
-        <p class="kote-food__msg">Печалька, с курой закончился.</p>
       </div>
     </article>
   </body>
